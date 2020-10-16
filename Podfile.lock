@@ -1,0 +1,97 @@
+PODS:
+  - IQKeyboardManager (6.5.6)
+  - JCore (2.3.6)
+  - JPush (3.3.6):
+    - JCore (< 3.0.0, >= 2.0.0)
+  - LBCommonComponents (1.1.0):
+    - LBCommonComponents/Base (= 1.1.0)
+    - LBCommonComponents/Category (= 1.1.0)
+    - LBCommonComponents/Macros (= 1.1.0)
+  - LBCommonComponents/Base (1.1.0):
+    - LBCommonComponents/Base/Views (= 1.1.0)
+  - LBCommonComponents/Base/Views (1.1.0)
+  - LBCommonComponents/Category (1.1.0):
+    - "LBCommonComponents/Category/NSArray+Safe (= 1.1.0)"
+    - "LBCommonComponents/Category/NSDate+ToString (= 1.1.0)"
+    - "LBCommonComponents/Category/NSDictionary+Safe (= 1.1.0)"
+    - "LBCommonComponents/Category/NSNull+Safe (= 1.1.0)"
+    - "LBCommonComponents/Category/NSObject+MethodSwizzling (= 1.1.0)"
+    - "LBCommonComponents/Category/NSObject+TopViewController (= 1.1.0)"
+    - "LBCommonComponents/Category/NSObject+TypeSafe (= 1.1.0)"
+    - "LBCommonComponents/Category/NSString+ToDate (= 1.1.0)"
+    - "LBCommonComponents/Category/UIButton+Action (= 1.1.0)"
+    - "LBCommonComponents/Category/UIImage+Color (= 1.1.0)"
+    - "LBCommonComponents/Category/UIView+Copy (= 1.1.0)"
+    - "LBCommonComponents/Category/UIView+Geometry (= 1.1.0)"
+  - "LBCommonComponents/Category/NSArray+Safe (1.1.0)":
+    - "LBCommonComponents/Category/NSObject+MethodSwizzling"
+  - "LBCommonComponents/Category/NSDate+ToString (1.1.0)"
+  - "LBCommonComponents/Category/NSDictionary+Safe (1.1.0)":
+    - "LBCommonComponents/Category/NSObject+MethodSwizzling"
+  - "LBCommonComponents/Category/NSNull+Safe (1.1.0)"
+  - "LBCommonComponents/Category/NSObject+MethodSwizzling (1.1.0)"
+  - "LBCommonComponents/Category/NSObject+TopViewController (1.1.0)"
+  - "LBCommonComponents/Category/NSObject+TypeSafe (1.1.0)"
+  - "LBCommonComponents/Category/NSString+ToDate (1.1.0)"
+  - "LBCommonComponents/Category/UIButton+Action (1.1.0)"
+  - "LBCommonComponents/Category/UIImage+Color (1.1.0)"
+  - "LBCommonComponents/Category/UIView+Copy (1.1.0)"
+  - "LBCommonComponents/Category/UIView+Geometry (1.1.0)"
+  - LBCommonComponents/Macros (1.1.0)
+  - LBUserInfo (1.0.1):
+    - LBUserInfo/LBUserLocation (= 1.0.1)
+    - LBUserInfo/LBUserModel (= 1.0.1)
+    - LBUserInfo/LBUserSystemAuth (= 1.0.1)
+    - LBUserInfo/LBUserTempOperateInfo (= 1.0.1)
+  - LBUserInfo/LBUserLocation (1.0.1):
+    - LBUserInfo/LBUserModel
+  - LBUserInfo/LBUserModel (1.0.1)
+  - LBUserInfo/LBUserSystemAuth (1.0.1):
+    - LBUserInfo/LBUserModel
+  - LBUserInfo/LBUserTempOperateInfo (1.0.1):
+    - LBUserInfo/LBUserModel
+  - libwebp (1.1.0):
+    - libwebp/demux (= 1.1.0)
+    - libwebp/mux (= 1.1.0)
+    - libwebp/webp (= 1.1.0)
+  - libwebp/demux (1.1.0):
+    - libwebp/webp
+  - libwebp/mux (1.1.0):
+    - libwebp/demux
+  - libwebp/webp (1.1.0)
+  - SDWebImage/Core (5.9.3)
+  - SDWebImageWebPCoder (0.6.1):
+    - libwebp (~> 1.0)
+    - SDWebImage/Core (~> 5.7)
+
+DEPENDENCIES:
+  - IQKeyboardManager
+  - JPush
+  - LBCommonComponents
+  - LBUserInfo
+  - SDWebImageWebPCoder
+
+SPEC REPOS:
+  trunk:
+    - IQKeyboardManager
+    - JCore
+    - JPush
+    - LBCommonComponents
+    - LBUserInfo
+    - libwebp
+    - SDWebImage
+    - SDWebImageWebPCoder
+
+SPEC CHECKSUMS:
+  IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
+  JCore: 06a5c80c176c5e46e8698eec3c780e1abb0bf180
+  JPush: a401b946dcc76b37335422487201bc1ecc8dd296
+  LBCommonComponents: 18620e3013c1d3c1b89788acc3899ef24f84755d
+  LBUserInfo: f0fb16d039c5b649fc1e3ac68f3a46395a9f76b8
+  libwebp: 04242ef451672185c1fe41b285a034d2fbda483c
+  SDWebImage: a31ee8e90a97303529e03fb0c333eae0eacb88e9
+  SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
+
+PODFILE CHECKSUM: ee7be1dc8d4241a2276a1d27d380f48dc1b06366
+
+COCOAPODS: 1.10.0.beta.2
