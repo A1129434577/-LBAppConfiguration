@@ -19,7 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LBAppConfiguration : NSObject
 @property (nonatomic, strong) NSString *JPushAppKey;
 @property (nonatomic, strong) Class loginVCClass;
+@property (nonatomic, strong) Class loginNaVCClass;
 @property (nonatomic, strong) Class homeVCClass;
+@property (nonatomic, strong) Class homeNaVCClass;
 @property (nonatomic, weak) id<LBHandleReceivedNotificationDelegate> notificationDelegate;
 +(LBAppConfiguration *)shareInstanse;
 @end

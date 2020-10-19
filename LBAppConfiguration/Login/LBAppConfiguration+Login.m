@@ -32,13 +32,17 @@
     }
     if ([LBUserModel shareInstanse].userInfo[LBToken] &&
         [LBUserModel shareInstanse].userInfo[LBAccount]) {//复用此token（免登陆）
-        if ([[self shareInstanse].homeVCClass isSubclassOfClass:UITabBarController.class]) {
-            LB_KEY_WINDOW.rootViewController = [[[self shareInstanse].homeVCClass alloc] init];
+        if ([self shareInstanse].homeNaVCClass) {
+            LB_KEY_WINDOW.rootViewController = [[[self shareInstanse].homeNaVCClass alloc] initWithRootViewController:[[[self shareInstanse].homeVCClass alloc] init]];
         }else{
-            LB_KEY_WINDOW.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[[self shareInstanse].homeVCClass alloc] init]];
+            LB_KEY_WINDOW.rootViewController = [[[self shareInstanse].homeVCClass alloc] init];
         }
     }else{
-        LB_KEY_WINDOW.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[[self shareInstanse].loginVCClass alloc] init]];
+        if ([self shareInstanse].loginNaVCClass) {
+            LB_KEY_WINDOW.rootViewController = [[[self shareInstanse].loginNaVCClass alloc] initWithRootViewController:[[[self shareInstanse].loginVCClass alloc] init]];
+        }else{
+            LB_KEY_WINDOW.rootViewController = [[[self shareInstanse].loginVCClass alloc] init];
+        }
     }
 }
 
