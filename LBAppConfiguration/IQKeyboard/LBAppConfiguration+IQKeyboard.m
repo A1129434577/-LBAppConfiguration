@@ -7,7 +7,7 @@
 //
 
 #import "LBAppConfiguration+IQKeyboard.h"
-#import <IQKeyboardManager/IQKeyboardManager.h>
+#import "IQKeyboardManager.h"
 
 @implementation LBAppConfiguration (IQKeyboard)
 +(void)load{

@@ -7,7 +7,7 @@
 //
 
 #import "LBAppConfiguration+SDWebImage.h"
-#import <SDWebImageWebPCoder/SDImageWebPCoder.h>
+#import "SDImageWebPCoder.h"
 
 @implementation LBAppConfiguration (SDWebImage)
 +(void)load{

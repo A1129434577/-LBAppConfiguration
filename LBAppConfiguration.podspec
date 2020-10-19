@@ -8,37 +8,37 @@ Pod::Spec.new do |s|
   s.author           = { 'A1129434577' => '1129434577@qq.com' }
   s.source           = { :git => 'https://github.com/A1129434577/LBAppConfiguration.git', :tag => s.version.to_s }
   s.ios.deployment_target = '9.0'
-
+  s.static_framework = true
+  #s.xcconfig = { 'VALID_ARCHS' => 'arm64 x86_64', }
+  s.pod_target_xcconfig = { 'VALID_ARCHS' => 'x86_64 armv7 arm64' }
   
   s.subspec 'LBAppConfiguration' do |ss|
     ss.source_files = "LBAppConfiguration/LBAppConfiguration/**/*.{h,m}"
   end
-
-  #s.default_subspec = 'Login'
-
-  s.subspec 'Login' do |ss|
-    ss.dependency 'LBAppConfiguration/LBAppConfiguration'
+  
+   s.subspec 'Login' do |ss|
     ss.dependency 'JPush'
     ss.dependency 'LBUserInfo'
     ss.dependency 'LBCommonComponents'
+    ss.dependency 'LBAppConfiguration/LBAppConfiguration'
     ss.source_files = "LBAppConfiguration/Login/**/*.{h,m}"
   end
   
   s.subspec 'JPush' do |ss|
-    ss.dependency 'LBAppConfiguration/LBAppConfiguration'
     ss.dependency 'JPush'
+    ss.dependency 'LBAppConfiguration/LBAppConfiguration'
     ss.source_files = "LBAppConfiguration/JPush/**/*.{h,m}"
   end
 
   s.subspec 'SDWebImage' do |ss|
-    ss.dependency 'LBAppConfiguration/LBAppConfiguration'
     ss.dependency 'SDWebImageWebPCoder'
+    ss.dependency 'LBAppConfiguration/LBAppConfiguration'
     ss.source_files = "LBAppConfiguration/SDWebImage/**/*.{h,m}"
   end
   
   s.subspec 'IQKeyboard' do |ss|
-    ss.dependency 'LBAppConfiguration/LBAppConfiguration'
     ss.dependency 'IQKeyboardManager'
+    ss.dependency 'LBAppConfiguration/LBAppConfiguration'
     ss.source_files = "LBAppConfiguration/IQKeyboard/**/*.{h,m}"
   end
   

@@ -7,8 +7,8 @@
 //
 
 #import "LBAppConfiguration+Login.h"
-#import <JPush/JPUSHService.h>
-#import <LBCommonComponents/LBUIMacro.h>
+#import "JPUSHService.h"
+#import "LBUIMacro.h"
 
 @implementation LBAppConfiguration (Login)
 +(void)tryLoginWithNewLoginInfo:(NSDictionary<LBUserModelKey,id> *)newInfo
