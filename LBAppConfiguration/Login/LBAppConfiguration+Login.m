@@ -49,7 +49,11 @@
 +(void)loginOut{
     [self cleanJPushSettingAndUserInfoHoldBackAccount];
     
-    LB_KEY_WINDOW.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[[self shareInstanse].loginVCClass alloc] init]];
+    if ([self shareInstanse].loginNaVCClass) {
+        LB_KEY_WINDOW.rootViewController = [[[self shareInstanse].loginNaVCClass alloc] initWithRootViewController:[[[self shareInstanse].loginVCClass alloc] init]];
+    }else{
+        LB_KEY_WINDOW.rootViewController = [[[self shareInstanse].loginVCClass alloc] init];
+    }
 }
 +(void)cleanJPushSettingAndUserInfoHoldBackAccount{
     NSString *account = [LBUserModel shareInstanse].userInfo[LBAccount];
