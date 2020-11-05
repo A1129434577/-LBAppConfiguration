@@ -21,8 +21,11 @@ NS_ASSUME_NONNULL_BEGIN
                      jPushAlias:(nullable NSString *)alias
                       jPushTags:(nullable NSSet<NSString *> *)tags;
 
-/// 用户退出登录成功切换主界面
-+(void)loginOut;
+/// 清除用户信息并退出到登录界面
++(void)loginOutHoldBackAccount;
+
+/// 保留用户信息并退出到登录界面
++(void)loginOutHoldBackUserInfo;
 
 /// 清空JPush设置和用户密码，保留用户账号
 +(void)cleanJPushSettingAndUserInfoHoldBackAccount;

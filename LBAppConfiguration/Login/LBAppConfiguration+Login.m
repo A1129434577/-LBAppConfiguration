@@ -46,9 +46,11 @@
     }
 }
 
-+(void)loginOut{
++(void)loginOutHoldBackAccount{
     [self cleanJPushSettingAndUserInfoHoldBackAccount];
-    
+    [self loginOutHoldBackUserInfo];
+}
++(void)loginOutHoldBackUserInfo{
     if ([self shareInstanse].loginNaVCClass) {
         LB_KEY_WINDOW.rootViewController = [[[self shareInstanse].loginNaVCClass alloc] initWithRootViewController:[[[self shareInstanse].loginVCClass alloc] init]];
     }else{
