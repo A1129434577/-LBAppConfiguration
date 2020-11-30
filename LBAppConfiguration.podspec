@@ -26,6 +26,8 @@ Pod::Spec.new do |s|
   
   s.subspec 'JPush' do |ss|
     ss.dependency 'JPush'
+    ss.dependency 'LBUserInfo'
+    ss.dependency 'LBCommonComponents'
     ss.dependency 'LBAppConfiguration/LBAppConfiguration'
     ss.source_files = "LBAppConfiguration/JPush/**/*.{h,m}"
   end

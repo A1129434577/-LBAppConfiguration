@@ -8,7 +8,7 @@
 #import "AppDelegate.h"
 #import "LBAppConfiguration+JPush.h"
 
-@interface AppDelegate ()<LBHandleReceivedNotificationDelegate>
+@interface AppDelegate ()<LBHandleNotificationProtocol>
 
 @end
 
@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [LBAppConfiguration shareInstanse].JPushAppKey = @"激光推送AppKey";
+    [LBAppConfiguration shareInstanse].jpushKey = @"激光推送AppKey";
     [LBAppConfiguration shareInstanse].notificationDelegate = self;
     
     return YES;
@@ -40,5 +40,7 @@
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
 }
 
-
+-(void)handleNotification:(NSDictionary *)notificationInfo{
+    
+}
 @end
