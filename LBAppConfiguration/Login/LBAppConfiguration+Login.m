@@ -37,10 +37,18 @@ static NSString *LBModalPresentationStyleKey = @"LBModalPresentationStyleKey";
         } seq:2];
     }
     if ([self shareInstanse].touristPattern) {
-        if ([self shareInstanse].homeNaVCClass) {
-            LB_KEY_WINDOW.rootViewController = [[[self shareInstanse].homeNaVCClass alloc] initWithRootViewController:[[[self shareInstanse].homeVCClass alloc] init]];
+        UIViewController *loginVC = [self findLoginViewControllerWithRootViewController:LB_KEY_WINDOW.rootViewController];
+        if (loginVC.navigationController) {
+            loginVC = loginVC.navigationController;
+        }
+        if (loginVC) {
+            [loginVC dismissViewControllerAnimated:YES completion:NULL];
         }else{
-            LB_KEY_WINDOW.rootViewController = [[[self shareInstanse].homeVCClass alloc] init];
+            if ([self shareInstanse].homeNaVCClass) {
+                LB_KEY_WINDOW.rootViewController = [[[self shareInstanse].homeNaVCClass alloc] initWithRootViewController:[[[self shareInstanse].homeVCClass alloc] init]];
+            }else{
+                LB_KEY_WINDOW.rootViewController = [[[self shareInstanse].homeVCClass alloc] init];
+            }
         }
     }
     else{
@@ -80,7 +88,7 @@ static NSString *LBModalPresentationStyleKey = @"LBModalPresentationStyleKey";
     if ([self shareInstanse].touristPattern) {
         UIViewController *topVC = [UIViewController topViewControllerWithRootViewController:LB_KEY_WINDOW.rootViewController];
         if (![topVC isKindOfClass:[self shareInstanse].loginVCClass]) {
-            loginVC.modalPresentationStyle = [self shareInstanse].modalPresentationStyle;
+            loginVC.modalPresentationStyle = ([self shareInstanse].modalPresentationStyle==UIModalPresentationFullScreen)?UIModalPresentationCustom:[self shareInstanse].modalPresentationStyle;
             [topVC presentViewController:loginVC animated:YES completion:NULL];
             loginVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:[self shareInstanse] action:@selector(touristLoginCancel)];
         }
@@ -107,6 +115,26 @@ static NSString *LBModalPresentationStyleKey = @"LBModalPresentationStyleKey";
     } seq:4];
 }
 
+
++ (UIViewController *)findLoginViewControllerWithRootViewController:(UIViewController *)rootVC
+{
+    if ([rootVC isKindOfClass:[UITabBarController class]]) {
+        UITabBarController *tabBarController = (UITabBarController*)rootVC;
+        return (UIViewController *)[self topViewControllerWithRootViewController:tabBarController.selectedViewController];
+    } else if ([rootVC isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *navigationController = (UINavigationController*)rootVC;
+        return (UIViewController *)[self topViewControllerWithRootViewController:(UIViewController *)navigationController.visibleViewController];
+    } else if (rootVC.presentedViewController) {
+        UIViewController *presentedViewController = (UIViewController *)rootVC.presentedViewController;
+        if ([presentedViewController isKindOfClass:[self shareInstanse].loginVCClass]) {
+            return presentedViewController;
+        }
+        return (UIViewController *)[self topViewControllerWithRootViewController:presentedViewController];
+    } else {
+        return nil;
+    }
+}
+
 -(void)touristLoginCancel{
     [[UIViewController topViewControllerWithRootViewController:LB_KEY_WINDOW.rootViewController] dismissViewControllerAnimated:YES completion:NULL];
 }
@@ -124,4 +152,7 @@ static NSString *LBModalPresentationStyleKey = @"LBModalPresentationStyleKey";
 - (void)setModalPresentationStyle:(UIModalPresentationStyle)modalPresentationStyle{
     objc_setAssociatedObject(self, &LBModalPresentationStyleKey, @(modalPresentationStyle), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
+
+
+
 @end
