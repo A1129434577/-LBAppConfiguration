@@ -41,6 +41,9 @@ static NSString *LBModalPresentationStyleKey = @"LBModalPresentationStyleKey";
         if (loginVC.navigationController) {
             loginVC = loginVC.navigationController;
         }
+        if (loginVC.presentingViewController) {
+            loginVC = loginVC.presentingViewController;
+        }
         if (loginVC) {
             [loginVC dismissViewControllerAnimated:YES completion:NULL];
         }else{
@@ -118,18 +121,18 @@ static NSString *LBModalPresentationStyleKey = @"LBModalPresentationStyleKey";
 
 + (UIViewController *)findLoginViewControllerWithRootViewController:(UIViewController *)rootVC
 {
+    if ([rootVC isKindOfClass:[self shareInstanse].loginVCClass]) {
+        return rootVC;
+    }
     if ([rootVC isKindOfClass:[UITabBarController class]]) {
         UITabBarController *tabBarController = (UITabBarController*)rootVC;
-        return (UIViewController *)[self topViewControllerWithRootViewController:tabBarController.selectedViewController];
+        return (UIViewController *)[self findLoginViewControllerWithRootViewController:tabBarController.selectedViewController];
     } else if ([rootVC isKindOfClass:[UINavigationController class]]) {
         UINavigationController *navigationController = (UINavigationController*)rootVC;
-        return (UIViewController *)[self topViewControllerWithRootViewController:(UIViewController *)navigationController.visibleViewController];
+        return (UIViewController *)[self findLoginViewControllerWithRootViewController:(UIViewController *)navigationController.topViewController];
     } else if (rootVC.presentedViewController) {
         UIViewController *presentedViewController = (UIViewController *)rootVC.presentedViewController;
-        if ([presentedViewController isKindOfClass:[self shareInstanse].loginVCClass]) {
-            return presentedViewController;
-        }
-        return (UIViewController *)[self topViewControllerWithRootViewController:presentedViewController];
+        return (UIViewController *)[self findLoginViewControllerWithRootViewController:presentedViewController];
     } else {
         return nil;
     }
