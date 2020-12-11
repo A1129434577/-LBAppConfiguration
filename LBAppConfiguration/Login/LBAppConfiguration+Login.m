@@ -91,7 +91,7 @@ static NSString *LBModalPresentationStyleKey = @"LBModalPresentationStyleKey";
     if ([self shareInstanse].touristPattern) {
         UIViewController *topVC = [UIViewController topViewControllerWithRootViewController:LB_KEY_WINDOW.rootViewController];
         if (![topVC isKindOfClass:[self shareInstanse].loginVCClass]) {
-            loginVC.modalPresentationStyle = ([self shareInstanse].modalPresentationStyle==UIModalPresentationFullScreen)?UIModalPresentationCustom:[self shareInstanse].modalPresentationStyle;
+            loginVC.modalPresentationStyle = [self shareInstanse].modalPresentationStyle;
             [topVC presentViewController:loginVC animated:YES completion:NULL];
             loginVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:[self shareInstanse] action:@selector(touristLoginCancel)];
         }
