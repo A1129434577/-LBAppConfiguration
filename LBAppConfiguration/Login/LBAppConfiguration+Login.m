@@ -91,7 +91,7 @@ static NSString *LBModalPresentationStyleKey = @"LBModalPresentationStyleKey";
     if ([self shareInstanse].touristPattern) {
         UIViewController *topVC = [UIViewController topViewControllerWithRootViewController:LB_KEY_WINDOW.rootViewController];
         if (![topVC isKindOfClass:[self shareInstanse].loginVCClass]) {
-            loginVC.modalPresentationStyle = [self shareInstanse].modalPresentationStyle;
+            loginVC.modalPresentationStyle = (topVC.modalPresentationStyle==UIModalPresentationCustom)?UIModalPresentationCustom:[self shareInstanse].modalPresentationStyle;//适配低版本iOS当topVC为UIModalPresentationCustom时，当再推出UIModalPresentationFullScreen然后退出时topVC显示问题
             [topVC presentViewController:loginVC animated:YES completion:NULL];
             loginVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:[self shareInstanse] action:@selector(touristLoginCancel)];
         }
