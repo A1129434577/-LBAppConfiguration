@@ -109,7 +109,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
 }
 
-- (void)JPush_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {    
+- (void)JPush_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {  //点击推送消息
     [JPUSHService handleRemoteNotification:userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
     NSLog(@"iOS7及以上系统，收到通知:%@", userInfo);
@@ -122,7 +122,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #pragma mark- JPUSHRegisterDelegate
-// iOS 10 Support
+// iOS 10 Support 前台时收到推送消息
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler  API_AVAILABLE(ios(10.0)){
     // Required
     NSDictionary * userInfo = notification.request.content.userInfo;
@@ -133,12 +133,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         NSLog(@"iOS10 前台收到本地通知::%@",userInfo);
     }
     completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以设置
-    if ([self.notificationDelegate respondsToSelector:@selector(handleNotification:)]) {
-        [self.notificationDelegate handleNotification:userInfo];
-    }
+//    if ([self.notificationDelegate respondsToSelector:@selector(handleNotification:)]) {
+//        [self.notificationDelegate handleNotification:userInfo];
+//    }
 }
 
-// iOS 10 Support
+// iOS 10 Support 点击推送消息
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler API_AVAILABLE(ios(10.0)){
     // Required
     NSDictionary * userInfo = response.notification.request.content.userInfo;
