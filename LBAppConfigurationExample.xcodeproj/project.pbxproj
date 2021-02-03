@@ -15,14 +15,15 @@
 		4035B0C025CA7D0400987BAC /* LBAppConfiguration+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 4035B0B925CA7D0400987BAC /* LBAppConfiguration+Login.m */; };
 		40601FB52539935300D6E65D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40601FB42539935300D6E65D /* AppDelegate.m */; };
 		40601FB82539935300D6E65D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40601FB72539935300D6E65D /* SceneDelegate.m */; };
-		40601FBB2539935300D6E65D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40601FBA2539935300D6E65D /* ViewController.m */; };
-		40601FBE2539935300D6E65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40601FBC2539935300D6E65D /* Main.storyboard */; };
+		40601FBB2539935300D6E65D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40601FBA2539935300D6E65D /* LoginViewController.m */; };
 		40601FC02539935600D6E65D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40601FBF2539935600D6E65D /* Assets.xcassets */; };
 		40601FC32539935600D6E65D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40601FC12539935600D6E65D /* LaunchScreen.storyboard */; };
 		40601FC62539935600D6E65D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40601FC52539935600D6E65D /* main.m */; };
 		40601FD02539935600D6E65D /* LBAppConfigurationExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40601FCF2539935600D6E65D /* LBAppConfigurationExampleTests.m */; };
 		40601FDB2539935600D6E65D /* LBAppConfigurationExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40601FDA2539935600D6E65D /* LBAppConfigurationExampleUITests.m */; };
 		406020072539940A00D6E65D /* LBAppConfiguration.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 40601FF72539940A00D6E65D /* LBAppConfiguration.podspec */; };
+		40D371FD25CA9B7300BE8C1E /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D371FC25CA9B7300BE8C1E /* TabBarViewController.m */; };
+		40D3720D25CA9E6500BE8C1E /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D3720C25CA9E6500BE8C1E /* HomeViewController.m */; };
 		4B96261ED673A1C0A9616C3D /* libPods-LBAppConfigurationExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 846B74FD97C26DF29C8E1267 /* libPods-LBAppConfigurationExample.a */; };
 /* End PBXBuildFile section */
 
@@ -62,9 +63,8 @@
 		40601FB42539935300D6E65D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		40601FB62539935300D6E65D /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		40601FB72539935300D6E65D /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		40601FB92539935300D6E65D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		40601FBA2539935300D6E65D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		40601FBD2539935300D6E65D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		40601FB92539935300D6E65D /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		40601FBA2539935300D6E65D /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		40601FBF2539935600D6E65D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40601FC22539935600D6E65D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		40601FC42539935600D6E65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +76,10 @@
 		40601FDA2539935600D6E65D /* LBAppConfigurationExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBAppConfigurationExampleUITests.m; sourceTree = "<group>"; };
 		40601FDC2539935600D6E65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40601FF72539940A00D6E65D /* LBAppConfiguration.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LBAppConfiguration.podspec; sourceTree = "<group>"; };
+		40D371FB25CA9B7300BE8C1E /* TabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		40D371FC25CA9B7300BE8C1E /* TabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		40D3720B25CA9E6500BE8C1E /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		40D3720C25CA9E6500BE8C1E /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		49891443281D48CBF1548238 /* Pods-LBAppConfigurationExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBAppConfigurationExample.release.xcconfig"; path = "Target Support Files/Pods-LBAppConfigurationExample/Pods-LBAppConfigurationExample.release.xcconfig"; sourceTree = "<group>"; };
 		7DEF7A756BE6966718010A3C /* Pods-LBAppConfigurationExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBAppConfigurationExample.debug.xcconfig"; path = "Target Support Files/Pods-LBAppConfigurationExample/Pods-LBAppConfigurationExample.debug.xcconfig"; sourceTree = "<group>"; };
 		846B74FD97C26DF29C8E1267 /* libPods-LBAppConfigurationExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LBAppConfigurationExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,14 +205,13 @@
 		40601FB22539935300D6E65D /* LBAppConfigurationExample */ = {
 			isa = PBXGroup;
 			children = (
+				40D3721425CAA03000BE8C1E /* Login */,
+				40D3720725CA9E2600BE8C1E /* TabBarController */,
 				4035B0DB25CA7FF000987BAC /* LBAppConfigurationExample.entitlements */,
 				40601FB32539935300D6E65D /* AppDelegate.h */,
 				40601FB42539935300D6E65D /* AppDelegate.m */,
 				40601FB62539935300D6E65D /* SceneDelegate.h */,
 				40601FB72539935300D6E65D /* SceneDelegate.m */,
-				40601FB92539935300D6E65D /* ViewController.h */,
-				40601FBA2539935300D6E65D /* ViewController.m */,
-				40601FBC2539935300D6E65D /* Main.storyboard */,
 				40601FBF2539935600D6E65D /* Assets.xcassets */,
 				40601FC12539935600D6E65D /* LaunchScreen.storyboard */,
 				40601FC42539935600D6E65D /* Info.plist */,
@@ -233,6 +236,26 @@
 				40601FDC2539935600D6E65D /* Info.plist */,
 			);
 			path = LBAppConfigurationExampleUITests;
+			sourceTree = "<group>";
+		};
+		40D3720725CA9E2600BE8C1E /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				40D371FB25CA9B7300BE8C1E /* TabBarViewController.h */,
+				40D371FC25CA9B7300BE8C1E /* TabBarViewController.m */,
+				40D3720B25CA9E6500BE8C1E /* HomeViewController.h */,
+				40D3720C25CA9E6500BE8C1E /* HomeViewController.m */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		40D3721425CAA03000BE8C1E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				40601FB92539935300D6E65D /* LoginViewController.h */,
+				40601FBA2539935300D6E65D /* LoginViewController.m */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		49B64E7FF0C9ABB3617DCE35 /* Pods */ = {
@@ -358,7 +381,6 @@
 				40601FC32539935600D6E65D /* LaunchScreen.storyboard in Resources */,
 				406020072539940A00D6E65D /* LBAppConfiguration.podspec in Resources */,
 				40601FC02539935600D6E65D /* Assets.xcassets in Resources */,
-				40601FBE2539935300D6E65D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,9 +430,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40601FBB2539935300D6E65D /* ViewController.m in Sources */,
+				40601FBB2539935300D6E65D /* LoginViewController.m in Sources */,
 				4035B0BD25CA7D0400987BAC /* LBAppConfiguration+SDWebImage.m in Sources */,
 				4035B0C025CA7D0400987BAC /* LBAppConfiguration+Login.m in Sources */,
+				40D371FD25CA9B7300BE8C1E /* TabBarViewController.m in Sources */,
 				4035B0BF25CA7D0400987BAC /* LBAppConfiguration+Notifications.m in Sources */,
 				40601FB52539935300D6E65D /* AppDelegate.m in Sources */,
 				4035B0BB25CA7D0400987BAC /* LBAppConfiguration+IQKeyboard.m in Sources */,
@@ -418,6 +441,7 @@
 				40601FB82539935300D6E65D /* SceneDelegate.m in Sources */,
 				4035B0BE25CA7D0400987BAC /* LBAppConfiguration.m in Sources */,
 				4035B0BC25CA7D0400987BAC /* LBAppConfiguration+JPush.m in Sources */,
+				40D3720D25CA9E6500BE8C1E /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,14 +477,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		40601FBC2539935300D6E65D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				40601FBD2539935300D6E65D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		40601FC12539935600D6E65D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

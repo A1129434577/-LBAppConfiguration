@@ -6,8 +6,9 @@
 //
 
 #import "AppDelegate.h"
+
 #import "LBAppConfiguration+JPush.h"
-#import "LBAppConfiguration+Login.h"
+
 
 @interface AppDelegate ()<LBNotificationsDelegate>
 
@@ -18,11 +19,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [LBAppConfiguration shareInstanse].appDelegateClass = self.class;
-    [LBAppConfiguration shareInstanse].jpushKey = @"12b49a27a9ba6cbad42b77d8";//@"激光推送AppKey";
-    [LBAppConfiguration shareInstanse].notificationDelegate = self;
     
-    [LBAppConfiguration tryLoginWithNewLoginInfo:nil];
+    [LBAppConfiguration shareInstanse].appDelegateClass = self.class;
+    [LBAppConfiguration shareInstanse].jpushKey = @"激光推送AppKey";
+    
+    [LBAppConfiguration shareInstanse].notificationDelegate = self;
     
     return YES;
 }
@@ -46,8 +47,8 @@
 
 #pragma mark LBNotificationsDelegate
 - (void)pushNotificationsConfig{
-    //设置激光推送别名
-    [JPUSHService setAlias:@"18108086237" completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+    //比如设置激光推送别名
+    [JPUSHService setAlias:@"极光推送别名" completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
         
     }  seq:1];
 }
