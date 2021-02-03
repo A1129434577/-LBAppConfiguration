@@ -17,6 +17,6 @@ pod 'LBAppConfiguration'
 //[LBAppConfiguration shareInstanse].homeVCNaClass = UINavigationController.class;
 //是否支持游客模式
 [LBAppConfiguration shareInstanse].touristPattern = YES;
-//开始登录，loginInfo为基本用户信息
+//开始登录，loginInfo为基本用户信息，内部会依据此信息判断是否是已登录状态
 [LBAppConfiguration tryLoginWithNewLoginInfo:nil];
 ```
