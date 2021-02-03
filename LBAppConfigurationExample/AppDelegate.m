@@ -20,9 +20,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    //如果您的项目正好使用极光推送，那么保证您引用了此模块下得极光推送模块下然后设置这两项快速集成
     [LBAppConfiguration shareInstanse].appDelegateClass = self.class;
     [LBAppConfiguration shareInstanse].jpushKey = @"激光推送AppKey";
     
+    //设置消息推送的代理（通用）
     [LBAppConfiguration shareInstanse].notificationDelegate = self;
     
     return YES;

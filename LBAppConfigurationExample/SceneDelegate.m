@@ -34,12 +34,17 @@
     
     
     
+    //设置登录控制器类
     [LBAppConfiguration shareInstanse].loginVCClass = LoginViewController.class;
+    //如果需要设置登录导航控制器类
     [LBAppConfiguration shareInstanse].loginNaVCClass = UINavigationController.class;
+    //设置主界面类
     [LBAppConfiguration shareInstanse].homeVCClass = TabBarViewController.class;
-//    [LBAppConfiguration shareInstanse].homeVCNaClass = UINavigationController.class;
-    
+    //如果需要设置主界面导航控制器类
+    //[LBAppConfiguration shareInstanse].homeVCNaClass = UINavigationController.class;
+    //是否支持游客模式
     [LBAppConfiguration shareInstanse].touristPattern = YES;
+    //开始登录，loginInfo为基本用户信息，内部会依据此信息判断是否是已登录状态
     [LBAppConfiguration tryLoginWithNewLoginInfo:nil];
 }
 
