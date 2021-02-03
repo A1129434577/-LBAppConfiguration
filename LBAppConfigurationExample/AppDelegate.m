@@ -7,8 +7,9 @@
 
 #import "AppDelegate.h"
 #import "LBAppConfiguration+JPush.h"
+#import "LBAppConfiguration+Login.h"
 
-@interface AppDelegate ()<LBHandleNotificationProtocol>
+@interface AppDelegate ()<LBNotificationsDelegate>
 
 @end
 
@@ -17,8 +18,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [LBAppConfiguration shareInstanse].jpushKey = @"激光推送AppKey";
+    [LBAppConfiguration shareInstanse].appDelegateClass = self.class;
+    [LBAppConfiguration shareInstanse].jpushKey = @"12b49a27a9ba6cbad42b77d8";//@"激光推送AppKey";
     [LBAppConfiguration shareInstanse].notificationDelegate = self;
+    
+    [LBAppConfiguration tryLoginWithNewLoginInfo:nil];
     
     return YES;
 }
@@ -40,7 +44,21 @@
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
 }
 
+#pragma mark LBNotificationsDelegate
+- (void)pushNotificationsConfig{
+    //设置激光推送别名
+    [JPUSHService setAlias:@"18108086237" completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+        
+    }  seq:1];
+}
+
+-(void)cleanPushNotificationsConfig{
+    [JPUSHService deleteAlias:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+        
+    } seq:3];
+}
+
 -(void)handleNotification:(NSDictionary *)notificationInfo{
-    
+    NSLog(@"点击了推送消息");
 }
 @end

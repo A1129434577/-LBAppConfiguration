@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4035B0BB25CA7D0400987BAC /* LBAppConfiguration+IQKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 4035B0AB25CA7D0400987BAC /* LBAppConfiguration+IQKeyboard.m */; };
+		4035B0BC25CA7D0400987BAC /* LBAppConfiguration+JPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 4035B0AD25CA7D0400987BAC /* LBAppConfiguration+JPush.m */; };
+		4035B0BD25CA7D0400987BAC /* LBAppConfiguration+SDWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4035B0B025CA7D0400987BAC /* LBAppConfiguration+SDWebImage.m */; };
+		4035B0BE25CA7D0400987BAC /* LBAppConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4035B0B425CA7D0400987BAC /* LBAppConfiguration.m */; };
+		4035B0BF25CA7D0400987BAC /* LBAppConfiguration+Notifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 4035B0B725CA7D0400987BAC /* LBAppConfiguration+Notifications.m */; };
+		4035B0C025CA7D0400987BAC /* LBAppConfiguration+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 4035B0B925CA7D0400987BAC /* LBAppConfiguration+Login.m */; };
 		40601FB52539935300D6E65D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40601FB42539935300D6E65D /* AppDelegate.m */; };
 		40601FB82539935300D6E65D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40601FB72539935300D6E65D /* SceneDelegate.m */; };
 		40601FBB2539935300D6E65D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40601FBA2539935300D6E65D /* ViewController.m */; };
@@ -17,11 +23,6 @@
 		40601FD02539935600D6E65D /* LBAppConfigurationExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40601FCF2539935600D6E65D /* LBAppConfigurationExampleTests.m */; };
 		40601FDB2539935600D6E65D /* LBAppConfigurationExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40601FDA2539935600D6E65D /* LBAppConfigurationExampleUITests.m */; };
 		406020072539940A00D6E65D /* LBAppConfiguration.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 40601FF72539940A00D6E65D /* LBAppConfiguration.podspec */; };
-		406020082539940A00D6E65D /* LBAppConfiguration+IQKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 40601FFC2539940A00D6E65D /* LBAppConfiguration+IQKeyboard.m */; };
-		406020092539940A00D6E65D /* LBAppConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 40601FFD2539940A00D6E65D /* LBAppConfiguration.m */; };
-		4060200A2539940A00D6E65D /* LBAppConfiguration+JPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 40601FFF2539940A00D6E65D /* LBAppConfiguration+JPush.m */; };
-		4060200B2539940A00D6E65D /* LBAppConfiguration+SDWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 406020022539940A00D6E65D /* LBAppConfiguration+SDWebImage.m */; };
-		4060200C2539940A00D6E65D /* LBAppConfiguration+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 406020052539940A00D6E65D /* LBAppConfiguration+Login.m */; };
 		4B96261ED673A1C0A9616C3D /* libPods-LBAppConfigurationExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 846B74FD97C26DF29C8E1267 /* libPods-LBAppConfigurationExample.a */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4035B0AA25CA7D0400987BAC /* LBAppConfiguration+IQKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LBAppConfiguration+IQKeyboard.h"; sourceTree = "<group>"; };
+		4035B0AB25CA7D0400987BAC /* LBAppConfiguration+IQKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LBAppConfiguration+IQKeyboard.m"; sourceTree = "<group>"; };
+		4035B0AD25CA7D0400987BAC /* LBAppConfiguration+JPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LBAppConfiguration+JPush.m"; sourceTree = "<group>"; };
+		4035B0AE25CA7D0400987BAC /* LBAppConfiguration+JPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LBAppConfiguration+JPush.h"; sourceTree = "<group>"; };
+		4035B0B025CA7D0400987BAC /* LBAppConfiguration+SDWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LBAppConfiguration+SDWebImage.m"; sourceTree = "<group>"; };
+		4035B0B125CA7D0400987BAC /* LBAppConfiguration+SDWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LBAppConfiguration+SDWebImage.h"; sourceTree = "<group>"; };
+		4035B0B325CA7D0400987BAC /* LBAppConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBAppConfiguration.h; sourceTree = "<group>"; };
+		4035B0B425CA7D0400987BAC /* LBAppConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBAppConfiguration.m; sourceTree = "<group>"; };
+		4035B0B625CA7D0400987BAC /* LBAppConfiguration+Notifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LBAppConfiguration+Notifications.h"; sourceTree = "<group>"; };
+		4035B0B725CA7D0400987BAC /* LBAppConfiguration+Notifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LBAppConfiguration+Notifications.m"; sourceTree = "<group>"; };
+		4035B0B925CA7D0400987BAC /* LBAppConfiguration+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LBAppConfiguration+Login.m"; sourceTree = "<group>"; };
+		4035B0BA25CA7D0400987BAC /* LBAppConfiguration+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LBAppConfiguration+Login.h"; sourceTree = "<group>"; };
+		4035B0DB25CA7FF000987BAC /* LBAppConfigurationExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LBAppConfigurationExample.entitlements; sourceTree = "<group>"; };
 		40601FB02539935300D6E65D /* LBAppConfigurationExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBAppConfigurationExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40601FB32539935300D6E65D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		40601FB42539935300D6E65D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -62,16 +76,6 @@
 		40601FDA2539935600D6E65D /* LBAppConfigurationExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBAppConfigurationExampleUITests.m; sourceTree = "<group>"; };
 		40601FDC2539935600D6E65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40601FF72539940A00D6E65D /* LBAppConfiguration.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LBAppConfiguration.podspec; sourceTree = "<group>"; };
-		40601FF92539940A00D6E65D /* LBAppConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBAppConfiguration.h; sourceTree = "<group>"; };
-		40601FFB2539940A00D6E65D /* LBAppConfiguration+IQKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LBAppConfiguration+IQKeyboard.h"; sourceTree = "<group>"; };
-		40601FFC2539940A00D6E65D /* LBAppConfiguration+IQKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LBAppConfiguration+IQKeyboard.m"; sourceTree = "<group>"; };
-		40601FFD2539940A00D6E65D /* LBAppConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBAppConfiguration.m; sourceTree = "<group>"; };
-		40601FFF2539940A00D6E65D /* LBAppConfiguration+JPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LBAppConfiguration+JPush.m"; sourceTree = "<group>"; };
-		406020002539940A00D6E65D /* LBAppConfiguration+JPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LBAppConfiguration+JPush.h"; sourceTree = "<group>"; };
-		406020022539940A00D6E65D /* LBAppConfiguration+SDWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LBAppConfiguration+SDWebImage.m"; sourceTree = "<group>"; };
-		406020032539940A00D6E65D /* LBAppConfiguration+SDWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LBAppConfiguration+SDWebImage.h"; sourceTree = "<group>"; };
-		406020052539940A00D6E65D /* LBAppConfiguration+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LBAppConfiguration+Login.m"; sourceTree = "<group>"; };
-		406020062539940A00D6E65D /* LBAppConfiguration+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LBAppConfiguration+Login.h"; sourceTree = "<group>"; };
 		49891443281D48CBF1548238 /* Pods-LBAppConfigurationExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBAppConfigurationExample.release.xcconfig"; path = "Target Support Files/Pods-LBAppConfigurationExample/Pods-LBAppConfigurationExample.release.xcconfig"; sourceTree = "<group>"; };
 		7DEF7A756BE6966718010A3C /* Pods-LBAppConfigurationExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBAppConfigurationExample.debug.xcconfig"; path = "Target Support Files/Pods-LBAppConfigurationExample/Pods-LBAppConfigurationExample.debug.xcconfig"; sourceTree = "<group>"; };
 		846B74FD97C26DF29C8E1267 /* libPods-LBAppConfigurationExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LBAppConfigurationExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,11 +107,78 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4035B0A825CA7D0400987BAC /* LBAppConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				4035B0B225CA7D0400987BAC /* LBAppConfiguration */,
+				4035B0B825CA7D0400987BAC /* Login */,
+				4035B0B525CA7D0400987BAC /* Notifications */,
+				4035B0AC25CA7D0400987BAC /* JPush */,
+				4035B0A925CA7D0400987BAC /* IQKeyboard */,
+				4035B0AF25CA7D0400987BAC /* SDWebImage */,
+			);
+			path = LBAppConfiguration;
+			sourceTree = "<group>";
+		};
+		4035B0A925CA7D0400987BAC /* IQKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				4035B0AA25CA7D0400987BAC /* LBAppConfiguration+IQKeyboard.h */,
+				4035B0AB25CA7D0400987BAC /* LBAppConfiguration+IQKeyboard.m */,
+			);
+			path = IQKeyboard;
+			sourceTree = "<group>";
+		};
+		4035B0AC25CA7D0400987BAC /* JPush */ = {
+			isa = PBXGroup;
+			children = (
+				4035B0AE25CA7D0400987BAC /* LBAppConfiguration+JPush.h */,
+				4035B0AD25CA7D0400987BAC /* LBAppConfiguration+JPush.m */,
+			);
+			path = JPush;
+			sourceTree = "<group>";
+		};
+		4035B0AF25CA7D0400987BAC /* SDWebImage */ = {
+			isa = PBXGroup;
+			children = (
+				4035B0B125CA7D0400987BAC /* LBAppConfiguration+SDWebImage.h */,
+				4035B0B025CA7D0400987BAC /* LBAppConfiguration+SDWebImage.m */,
+			);
+			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		4035B0B225CA7D0400987BAC /* LBAppConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				4035B0B325CA7D0400987BAC /* LBAppConfiguration.h */,
+				4035B0B425CA7D0400987BAC /* LBAppConfiguration.m */,
+			);
+			path = LBAppConfiguration;
+			sourceTree = "<group>";
+		};
+		4035B0B525CA7D0400987BAC /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				4035B0B625CA7D0400987BAC /* LBAppConfiguration+Notifications.h */,
+				4035B0B725CA7D0400987BAC /* LBAppConfiguration+Notifications.m */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		4035B0B825CA7D0400987BAC /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4035B0BA25CA7D0400987BAC /* LBAppConfiguration+Login.h */,
+				4035B0B925CA7D0400987BAC /* LBAppConfiguration+Login.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		40601FA72539935300D6E65D = {
 			isa = PBXGroup;
 			children = (
 				40601FF72539940A00D6E65D /* LBAppConfiguration.podspec */,
-				40601FF82539940A00D6E65D /* LBAppConfiguration */,
+				4035B0A825CA7D0400987BAC /* LBAppConfiguration */,
 				40601FB22539935300D6E65D /* LBAppConfigurationExample */,
 				40601FCE2539935600D6E65D /* LBAppConfigurationExampleTests */,
 				40601FD92539935600D6E65D /* LBAppConfigurationExampleUITests */,
@@ -130,6 +201,7 @@
 		40601FB22539935300D6E65D /* LBAppConfigurationExample */ = {
 			isa = PBXGroup;
 			children = (
+				4035B0DB25CA7FF000987BAC /* LBAppConfigurationExample.entitlements */,
 				40601FB32539935300D6E65D /* AppDelegate.h */,
 				40601FB42539935300D6E65D /* AppDelegate.m */,
 				40601FB62539935300D6E65D /* SceneDelegate.h */,
@@ -161,63 +233,6 @@
 				40601FDC2539935600D6E65D /* Info.plist */,
 			);
 			path = LBAppConfigurationExampleUITests;
-			sourceTree = "<group>";
-		};
-		40601FF82539940A00D6E65D /* LBAppConfiguration */ = {
-			isa = PBXGroup;
-			children = (
-				406020432539A9D800D6E65D /* LBAppConfiguration */,
-				406020042539940A00D6E65D /* Login */,
-				40601FFE2539940A00D6E65D /* JPush */,
-				406020012539940A00D6E65D /* SDWebImage */,
-				40601FFA2539940A00D6E65D /* IQKeyboard */,
-			);
-			path = LBAppConfiguration;
-			sourceTree = "<group>";
-		};
-		40601FFA2539940A00D6E65D /* IQKeyboard */ = {
-			isa = PBXGroup;
-			children = (
-				40601FFB2539940A00D6E65D /* LBAppConfiguration+IQKeyboard.h */,
-				40601FFC2539940A00D6E65D /* LBAppConfiguration+IQKeyboard.m */,
-			);
-			path = IQKeyboard;
-			sourceTree = "<group>";
-		};
-		40601FFE2539940A00D6E65D /* JPush */ = {
-			isa = PBXGroup;
-			children = (
-				406020002539940A00D6E65D /* LBAppConfiguration+JPush.h */,
-				40601FFF2539940A00D6E65D /* LBAppConfiguration+JPush.m */,
-			);
-			path = JPush;
-			sourceTree = "<group>";
-		};
-		406020012539940A00D6E65D /* SDWebImage */ = {
-			isa = PBXGroup;
-			children = (
-				406020022539940A00D6E65D /* LBAppConfiguration+SDWebImage.m */,
-				406020032539940A00D6E65D /* LBAppConfiguration+SDWebImage.h */,
-			);
-			path = SDWebImage;
-			sourceTree = "<group>";
-		};
-		406020042539940A00D6E65D /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				406020062539940A00D6E65D /* LBAppConfiguration+Login.h */,
-				406020052539940A00D6E65D /* LBAppConfiguration+Login.m */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		406020432539A9D800D6E65D /* LBAppConfiguration */ = {
-			isa = PBXGroup;
-			children = (
-				40601FF92539940A00D6E65D /* LBAppConfiguration.h */,
-				40601FFD2539940A00D6E65D /* LBAppConfiguration.m */,
-			);
-			path = LBAppConfiguration;
 			sourceTree = "<group>";
 		};
 		49B64E7FF0C9ABB3617DCE35 /* Pods */ = {
@@ -393,15 +408,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				406020092539940A00D6E65D /* LBAppConfiguration.m in Sources */,
 				40601FBB2539935300D6E65D /* ViewController.m in Sources */,
+				4035B0BD25CA7D0400987BAC /* LBAppConfiguration+SDWebImage.m in Sources */,
+				4035B0C025CA7D0400987BAC /* LBAppConfiguration+Login.m in Sources */,
+				4035B0BF25CA7D0400987BAC /* LBAppConfiguration+Notifications.m in Sources */,
 				40601FB52539935300D6E65D /* AppDelegate.m in Sources */,
-				406020082539940A00D6E65D /* LBAppConfiguration+IQKeyboard.m in Sources */,
-				4060200B2539940A00D6E65D /* LBAppConfiguration+SDWebImage.m in Sources */,
-				4060200A2539940A00D6E65D /* LBAppConfiguration+JPush.m in Sources */,
+				4035B0BB25CA7D0400987BAC /* LBAppConfiguration+IQKeyboard.m in Sources */,
 				40601FC62539935600D6E65D /* main.m in Sources */,
-				4060200C2539940A00D6E65D /* LBAppConfiguration+Login.m in Sources */,
 				40601FB82539935300D6E65D /* SceneDelegate.m in Sources */,
+				4035B0BE25CA7D0400987BAC /* LBAppConfiguration.m in Sources */,
+				4035B0BC25CA7D0400987BAC /* LBAppConfiguration+JPush.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,16 +590,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LBAppConfigurationExample/LBAppConfigurationExample.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 58NS4B6N57;
+				DEVELOPMENT_TEAM = 9G9YC4MFEF;
 				INFOPLIST_FILE = LBAppConfigurationExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "--.LBAppConfigurationExample";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.sunsharp.mailang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -594,16 +613,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LBAppConfigurationExample/LBAppConfigurationExample.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 58NS4B6N57;
+				DEVELOPMENT_TEAM = 9G9YC4MFEF;
 				INFOPLIST_FILE = LBAppConfigurationExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "--.LBAppConfigurationExample";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.sunsharp.mailang;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

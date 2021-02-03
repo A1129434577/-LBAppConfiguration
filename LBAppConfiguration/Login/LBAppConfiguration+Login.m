@@ -7,35 +7,26 @@
 //
 
 #import "LBAppConfiguration+Login.h"
-#import "NSObject+LBTopViewController.h"
-#import "JPUSHService.h"
-#import "LBUIMacro.h"
 #import <objc/runtime.h>
+#import "LBUIMacro.h"
+#import "NSObject+LBTopViewController.h"
 
 static NSString *LBTouristPatternKey = @"LBTouristPatternKey";
 static NSString *LBModalPresentationStyleKey = @"LBModalPresentationStyleKey";
 
 
 @implementation LBAppConfiguration (Login)
-+(void)tryLoginWithNewLoginInfo:(NSDictionary<LBUserModelKey,id> *)newInfo
-                     jPushAlias:(NSString *)alias
-                      jPushTags:(NSSet<NSString *> *)tags{
++(void)tryLoginWithNewLoginInfo:(NSDictionary<LBUserModelKey,id> *)newInfo{
     if (newInfo) {
         //保存账号和token
         [[LBUserModel shareInstanse] setLBUserInfoObject:newInfo[LBToken] forKey:LBToken];
         [[LBUserModel shareInstanse] setLBUserInfoObject:newInfo[LBAccount] forKey:LBAccount];
     }
-    //设置激光推送
-    if (alias) {
-        [JPUSHService setAlias:alias completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
-            
-        }  seq:1];
+    
+    if ([[self shareInstanse].notificationDelegate respondsToSelector:@selector(pushNotificationsConfig)]) {
+        [[self shareInstanse].notificationDelegate pushNotificationsConfig];
     }
-    if (tags) {
-        [JPUSHService setTags:tags completion:^(NSInteger iResCode, NSSet *iTags, NSInteger seq) {
-            
-        } seq:2];
-    }
+    
     if ([self shareInstanse].touristPattern) {
         UIViewController *loginVC = [self findLoginViewControllerWithRootViewController:LB_KEY_WINDOW.rootViewController];
         if (loginVC.navigationController) {
@@ -72,15 +63,7 @@ static NSString *LBModalPresentationStyleKey = @"LBModalPresentationStyleKey";
     }
     
 }
-+ (void)loginOutCleanUserInfo{
-    [self cleanJPushSettingAndUserInfoHoldBackAccount:NO];
-    [self loginOut];
-}
 
-+(void)loginOutHoldBackAccount{
-    [self cleanJPushSettingAndUserInfoHoldBackAccount:YES];
-    [self loginOut];
-}
 +(void)loginOut{
     UIViewController *loginVC;
     if ([self shareInstanse].loginNaVCClass) {
@@ -91,7 +74,7 @@ static NSString *LBModalPresentationStyleKey = @"LBModalPresentationStyleKey";
     if ([self shareInstanse].touristPattern) {
         UIViewController *topVC = [UIViewController topViewControllerWithRootViewController:LB_KEY_WINDOW.rootViewController];
         if (![topVC isKindOfClass:[self shareInstanse].loginVCClass]) {
-            loginVC.modalPresentationStyle = (topVC.modalPresentationStyle==UIModalPresentationCustom)?UIModalPresentationCustom:[self shareInstanse].modalPresentationStyle;//适配低版本iOS当topVC为UIModalPresentationCustom时，当再推出UIModalPresentationFullScreen然后退出时topVC显示问题
+            loginVC.modalPresentationStyle = (topVC.modalPresentationStyle==UIModalPresentationCustom)?UIModalPresentationCustom:[self shareInstanse].modalPresentationStyle;
             [topVC presentViewController:loginVC animated:YES completion:NULL];
             loginVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:[self shareInstanse] action:@selector(touristLoginCancel)];
         }
@@ -100,24 +83,37 @@ static NSString *LBModalPresentationStyleKey = @"LBModalPresentationStyleKey";
     }
     
 }
-+(void)cleanJPushSettingAndUserInfoHoldBackAccount:(BOOL)holdBackAccount{
-    if (holdBackAccount) {
-        NSString *account = [LBUserModel shareInstanse].userInfo[LBAccount];
-        //移除用户数据
-        [[LBUserModel shareInstanse] removeUserInfo];
-        [[LBUserModel shareInstanse] setLBUserInfoObject:account forKey:LBAccount];
-    }
-    
-    //移除激光推送信息
-    [JPUSHService deleteAlias:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
-        
-    } seq:3];
-    
-    [JPUSHService cleanTags:^(NSInteger iResCode, NSSet *iTags, NSInteger seq) {
-        
-    } seq:4];
+
++(void)loginOutHoldBackAccount{
+    [self cleanUserInfoHoldBackAccount:YES];
+    [self cleanPushNotificationsConfig];
+    [self loginOut];
 }
 
++ (void)loginOutCleanUserInfo{
+    [self cleanUserInfoHoldBackAccount:NO];
+    [self cleanPushNotificationsConfig];
+    [self loginOut];
+}
+
++(void)cleanUserInfoHoldBackAccount:(BOOL)holdBackAccount{
+    if (holdBackAccount) {
+        //移除用户数据并保留登录账号
+        NSString *account = [LBUserModel shareInstanse].userInfo[LBAccount];
+        [[LBUserModel shareInstanse] removeUserInfo];
+        [[LBUserModel shareInstanse] setLBUserInfoObject:account forKey:LBAccount];
+    }else{
+        //移除用户数据
+        [[LBUserModel shareInstanse] removeUserInfo];
+    }
+}
+
+/// 删除推送设置
++(void)cleanPushNotificationsConfig{
+    if ([[self shareInstanse].notificationDelegate respondsToSelector:@selector(cleanPushNotificationsConfig)]) {
+        [[self shareInstanse].notificationDelegate cleanPushNotificationsConfig];
+    }
+}
 
 + (UIViewController *)findLoginViewControllerWithRootViewController:(UIViewController *)rootVC
 {
@@ -155,7 +151,4 @@ static NSString *LBModalPresentationStyleKey = @"LBModalPresentationStyleKey";
 - (void)setModalPresentationStyle:(UIModalPresentationStyle)modalPresentationStyle{
     objc_setAssociatedObject(self, &LBModalPresentationStyleKey, @(modalPresentationStyle), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-
-
-
 @end

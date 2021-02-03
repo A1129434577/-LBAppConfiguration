@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'LBAppConfiguration'
-  s.version          = '1.0.0'
+  s.version          = '1.1.0'
   s.summary          = '项目需要集成的第三方库快速配置。'
   s.description      = '项目需要集成的第三方库快速配置，省去了其他一些复杂的代码，一键设置，更快更方便。'
   s.homepage         = 'https://github.com/A1129434577/LBAppConfiguration'
@@ -16,11 +16,15 @@ Pod::Spec.new do |s|
     ss.source_files = "LBAppConfiguration/LBAppConfiguration/**/*.{h,m}"
   end
   
-   s.subspec 'Login' do |ss|
-    ss.dependency 'JPush'
+  s.subspec 'Notifications' do |ss|
+    ss.dependency 'LBAppConfiguration/LBAppConfiguration'
+    ss.source_files = "LBAppConfiguration/Notifications/**/*.{h,m}"
+  end
+  
+  s.subspec 'Login' do |ss|
     ss.dependency 'LBUserInfo'
     ss.dependency 'LBCommonComponents'
-    ss.dependency 'LBAppConfiguration/LBAppConfiguration'
+    ss.dependency 'LBAppConfiguration/Notifications'
     ss.source_files = "LBAppConfiguration/Login/**/*.{h,m}"
   end
   
@@ -28,7 +32,7 @@ Pod::Spec.new do |s|
     ss.dependency 'JPush'
     ss.dependency 'LBUserInfo'
     ss.dependency 'LBCommonComponents'
-    ss.dependency 'LBAppConfiguration/LBAppConfiguration'
+    ss.dependency 'LBAppConfiguration/Notifications'
     ss.source_files = "LBAppConfiguration/JPush/**/*.{h,m}"
   end
 
