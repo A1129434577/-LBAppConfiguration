@@ -1,0 +1,2 @@
+# LBAppConfiguration
+项目登录模块组件化，免去了一些重复且复杂设置，支持任意第三方推送，支持游客模式，只需要设置LoginController类名以及HomeController类名，内含需要集成的第三方库快速配置，省去了其他一些复杂的代码，一键设置，更快更方便。
