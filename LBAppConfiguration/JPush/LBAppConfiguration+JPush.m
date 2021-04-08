@@ -94,8 +94,7 @@ static NSString *LBJPushAppDelegateClassKey = @"LBJPushAppDelegateClassKey";
         [JPUSHService setupWithOption:launchOptions
                                appKey:[LBAppConfiguration shareInstanse].jpushKey
                               channel:@"App Store"
-                     apsForProduction:JPUSH_TYPE
-                advertisingIdentifier:nil];
+                     apsForProduction:JPUSH_TYPE];
     }
 }
 
