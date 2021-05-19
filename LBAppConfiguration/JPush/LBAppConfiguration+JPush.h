@@ -6,24 +6,19 @@
 //
 
 #import "LBAppConfiguration.h"
-#import "LBUserModel.h"
 #import "LBAppConfiguration+Notifications.h"
-
-// 引入JPush功能所需头文件
 #import "JPUSHService.h"
-// iOS10注册APNs所需头文件
-#ifdef NSFoundationVersionNumber_iOS_9_x_Max
-#import <UserNotifications/UserNotifications.h>
-#endif
 
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern NSString *const LBUserRemoteNotificationsSwitchOff;
 
-@interface LBAppConfiguration (JPush)<JPUSHRegisterDelegate>
-@property (nonatomic, copy)   NSString *jpushKey;
-@property (nonatomic, strong) Class appDelegateClass;
+@interface LBAppConfiguration (JPush)
+
+/// 快速配置极光推送，只需这一句
+/// @param appDelegateClass AppDelegate类，必须设置，否则将无法成功注册极光推送
+/// @param pushKey 极光推送key，必须设置，否则将无法成功注册极光推送
++(void)setAppDelegateClass:(nonnull Class)appDelegateClass jPushKey:(nonnull NSString *)pushKey;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -10,7 +10,7 @@
 #import "LBAppConfiguration+JPush.h"
 
 
-@interface AppDelegate ()<LBNotificationsDelegate>
+@interface AppDelegate ()<LBUserNotificationCenterDelegate>
 
 @end
 
@@ -20,20 +20,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    //如果您的项目正好使用极光推送，那么保证您引用了此模块下得极光推送模块下然后设置这两项快速集成
-    [LBAppConfiguration shareInstanse].appDelegateClass = self.class;
-    [LBAppConfiguration shareInstanse].jpushKey = @"激光推送AppKey";
-    
-    //设置消息推送的代理（通用）
+    //设置消息推送的代理（本地和远程推送通用）
     [LBAppConfiguration shareInstanse].notificationDelegate = self;
+    
+    //如果您的项目正好使用极光推送，那么可以这样设置快速集成极光推送
+    [LBAppConfiguration setAppDelegateClass:self.class jPushKey:@"08d54656edf68d60e50629c0"];
     
     return YES;
 }
 
 
 #pragma mark - UISceneSession lifecycle
-
-
 - (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
     // Called when a new scene session is being created.
     // Use this method to select a configuration to create the new scene with.
@@ -47,10 +44,14 @@
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
 }
 
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+    
+}
+
 #pragma mark LBNotificationsDelegate
 - (void)pushNotificationsConfig{
     //比如设置激光推送别名
-    [JPUSHService setAlias:@"极光推送别名" completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+    [JPUSHService setAlias:@"1129434577" completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
         
     }  seq:1];
 }
@@ -61,7 +62,11 @@
     } seq:3];
 }
 
--(void)handleNotification:(NSDictionary *)notificationInfo{
+-(void)didReceiveRemoteNotification:(NSDictionary *)notificationInfo{
+    NSLog(@"收到推送消息");
+}
+
+-(void)handleRemoteNotification:(NSDictionary *)notificationInfo{
     NSLog(@"点击了推送消息");
 }
 @end

@@ -6,7 +6,6 @@
 //
 
 #import "LBAppConfiguration+JPush.h"
-#import <objc/runtime.h>
 #import "NSObject+LBMethodSwizzling.h"
 
 #ifdef DEBUG
@@ -15,10 +14,6 @@
 #define JPUSH_TYPE 1
 #endif
 
-NSString *const LBUserRemoteNotificationsSwitchOff = @"LBUserRemoteNotificationsSwitchOff";
-
-static NSString *LBJPushKey = @"LBJPushKey";
-static NSString *LBJPushAppDelegateClassKey = @"LBJPushAppDelegateClassKey";
 
 @implementation LBAppConfiguration (JPush)
 +(void)load{
@@ -26,43 +21,9 @@ static NSString *LBJPushAppDelegateClassKey = @"LBJPushAppDelegateClassKey";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(JPush_ApplicationWillEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
-
-- (NSString *)jpushKey{
-    return objc_getAssociatedObject(self, &LBJPushKey);
++(void)JPush_ApplicationDidFinishLaunching:(NSNotification *)notification{
+    [self JPush_ApplicationWillEnterForeground];
 }
--(void)setJpushKey:(NSString *)jpushKey{
-    objc_setAssociatedObject(self, &LBJPushKey, jpushKey, OBJC_ASSOCIATION_COPY);
-}
-
-- (Class)appDelegateClass{
-    return objc_getAssociatedObject(self, &LBJPushAppDelegateClassKey);
-}
-- (void)setAppDelegateClass:(Class)appDelegateClass{
-    objc_setAssociatedObject(self, &LBJPushAppDelegateClassKey, appDelegateClass, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    
-    
-    [NSObject lb_swizzleMethodClass:appDelegateClass
-                         method:@selector(application:didRegisterForRemoteNotificationsWithDeviceToken:)
-          originalIsClassMethod:NO
-                      withClass:self.class
-                     withMethod:@selector(JPush_application:didRegisterForRemoteNotificationsWithDeviceToken:)
-          swizzledIsClassMethod:NO];
-    
-    [NSObject lb_swizzleMethodClass:appDelegateClass
-                         method:@selector(application:didFailToRegisterForRemoteNotificationsWithError:)
-          originalIsClassMethod:NO
-                      withClass:self.class
-                     withMethod:@selector(JPush_application:didFailToRegisterForRemoteNotificationsWithError:)
-          swizzledIsClassMethod:NO];
-    
-    [NSObject lb_swizzleMethodClass:appDelegateClass
-                         method:@selector(application:didReceiveRemoteNotification:fetchCompletionHandler:)
-          originalIsClassMethod:NO
-                      withClass:self.class
-                     withMethod:@selector(JPush_application:didReceiveRemoteNotification:fetchCompletionHandler:)
-          swizzledIsClassMethod:NO];
-}
-
 
 +(void)JPush_ApplicationWillEnterForeground{
     //清空消息通知数量提醒
@@ -70,100 +31,48 @@ static NSString *LBJPushAppDelegateClassKey = @"LBJPushAppDelegateClassKey";
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
-+(void)JPush_ApplicationDidFinishLaunching:(NSNotification *)notification{
-    [self JPush_ApplicationWillEnterForeground];
-   
-    if ([[LBUserModel shareInstanse].userInfo[LBUserRemoteNotificationsSwitchOff] boolValue] == NO) {
-        NSDictionary *launchOptions = notification.userInfo;
-        // 3.0.0及以后版本注册
-        JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
-        if (@available(iOS 12.0, *)) {
-          entity.types =
-            JPAuthorizationOptionAlert|
-            JPAuthorizationOptionBadge|
-            JPAuthorizationOptionSound|
-            JPAuthorizationOptionProvidesAppNotificationSettings;
-        } else {
-          entity.types =
-            JPAuthorizationOptionAlert|
-            JPAuthorizationOptionBadge|
-            JPAuthorizationOptionSound;
+
++(void)setAppDelegateClass:(Class)appDelegateClass jPushKey:(NSString *)pushKey{
+    //交互didRegisterForRemoteNotificationsWithDeviceToken方法来设置极光[JPUSHService registerDeviceToken:deviceToken]
+    [NSObject lb_swizzleMethodClass:appDelegateClass
+                         method:@selector(application:didRegisterForRemoteNotificationsWithDeviceToken:)
+          originalIsClassMethod:NO
+                      withClass:self
+                     withMethod:@selector(JPush_application:didRegisterForRemoteNotificationsWithDeviceToken:)
+          swizzledIsClassMethod:YES];
+    
+    
+    //推送通知配置
+    UNUserNotificationCenter *notificationCenter = [UNUserNotificationCenter currentNotificationCenter];
+    [notificationCenter getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+        if (settings.authorizationStatus == UNAuthorizationStatusNotDetermined) {
+            [notificationCenter requestAuthorizationWithOptions:(UNAuthorizationOptionBadge|
+                                                     UNAuthorizationOptionSound|
+                                                     UNAuthorizationOptionAlert)
+                                  completionHandler:^(BOOL granted, NSError * _Nullable error) {
+                
+            }];
         }
-        [JPUSHService registerForRemoteNotificationConfig:entity delegate:[LBAppConfiguration shareInstanse]];
-        
-        [JPUSHService setupWithOption:launchOptions
-                               appKey:[LBAppConfiguration shareInstanse].jpushKey
-                              channel:@"App Store"
-                     apsForProduction:JPUSH_TYPE];
+    }];
+    
+    //配置极光推送
+    [JPUSHService setupWithOption:nil
+                           appKey:pushKey
+                          channel:@"App Store"
+                 apsForProduction:JPUSH_TYPE];
+    
+    //注册一次保证didRegisterForRemoteNotificationsWithDeviceToken回调的执行
+    if ([LBAppConfiguration shareInstanse].userRemoteNotificationsOff == NO) {
+        [[UIApplication sharedApplication] registerForRemoteNotifications];//注册远端消息通知获取device token
     }
 }
 
-- (void)JPush_application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+
++ (void)JPush_application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [self JPush_application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
     /// Required - 注册 DeviceToken
     [JPUSHService registerDeviceToken:deviceToken];
 }
 
-- (void)JPush_application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    //Optional
-    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
-}
 
-- (void)JPush_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {  //点击推送消息
-    [JPUSHService handleRemoteNotification:userInfo];
-    completionHandler(UIBackgroundFetchResultNewData);
-    NSLog(@"iOS7及以上系统，收到通知:%@", userInfo);
-    
-    if ([self.notificationDelegate respondsToSelector:@selector(handleNotification:)]) {
-        [self.notificationDelegate handleNotification:userInfo];
-    }
-    
-}
-
-#ifdef NSFoundationVersionNumber_iOS_9_x_Max
-#pragma mark- JPUSHRegisterDelegate
-// iOS 10 Support 前台时收到推送消息
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler  API_AVAILABLE(ios(10.0)){
-    // Required
-    NSDictionary * userInfo = notification.request.content.userInfo;
-    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
-        [JPUSHService handleRemoteNotification:userInfo];
-        NSLog(@"iOS10 前台收到远程通知:%@", userInfo);
-    }else{
-        NSLog(@"iOS10 前台收到本地通知::%@",userInfo);
-    }
-    completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以设置
-}
-
-// iOS 10 Support 点击推送消息
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler API_AVAILABLE(ios(10.0)){
-    // Required
-    NSDictionary * userInfo = response.notification.request.content.userInfo;
-    if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
-        [JPUSHService handleRemoteNotification:userInfo];
-        NSLog(@"iOS10 收到远程通知:%@", userInfo);
-    }else{
-        NSLog(@"iOS10 收到本地通知::%@",userInfo);
-    }
-    completionHandler();  // 系统要求执行这个方法
-    
-    if ([self.notificationDelegate respondsToSelector:@selector(handleNotification:)]) {
-        [self.notificationDelegate handleNotification:userInfo];
-    }
-}
-
-- (void)jpushNotificationAuthorization:(JPAuthorizationStatus)status withInfo:(NSDictionary *)info {
-    NSLog(@"receive notification authorization status:%lu, info:%@", status, info);
-}
-
-#endif
-
-#ifdef __IPHONE_12_0
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center openSettingsForNotification:(UNNotification *)notification  API_AVAILABLE(ios(12.0)){
-  if (notification) {
-      NSLog(@"从通知界面直接进入应用");
-  }else{
-      NSLog(@"从系统设置界面进入应用");
-  }
-}
-#endif
 @end
