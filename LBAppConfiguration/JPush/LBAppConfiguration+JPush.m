@@ -14,6 +14,7 @@
 #define JPUSH_TYPE 1
 #endif
 
+static BOOL appDelegateRespondsToSelectorDidRegisterForRemoteNotificationsWithDeviceToken = NO;
 
 @implementation LBAppConfiguration (JPush)
 +(void)load{
@@ -31,15 +32,16 @@
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
-
-+(void)setAppDelegateClass:(Class)appDelegateClass jPushKey:(NSString *)pushKey{
-    //交互didRegisterForRemoteNotificationsWithDeviceToken方法来设置极光[JPUSHService registerDeviceToken:deviceToken]
-    [NSObject lb_swizzleMethodClass:appDelegateClass
++ (void)setJPushKey:(NSString *)pushKey {
+    //在交换之前判断AppDelegate是否实现didRegisterForRemoteNotificationsWithDeviceToken方法
+    appDelegateRespondsToSelectorDidRegisterForRemoteNotificationsWithDeviceToken = [[UIApplication sharedApplication].delegate respondsToSelector:@selector(application:didRegisterForRemoteNotificationsWithDeviceToken:)];
+    //交换didRegisterForRemoteNotificationsWithDeviceToken方法来设置极光[JPUSHService registerDeviceToken:deviceToken]
+    [NSObject lb_swizzleMethodClass:[UIApplication sharedApplication].delegate.class
                          method:@selector(application:didRegisterForRemoteNotificationsWithDeviceToken:)
           originalIsClassMethod:NO
                       withClass:self
                      withMethod:@selector(JPush_application:didRegisterForRemoteNotificationsWithDeviceToken:)
-          swizzledIsClassMethod:YES];
+          swizzledIsClassMethod:NO];
     
     
     //推送通知配置
@@ -68,8 +70,11 @@
 }
 
 
-+ (void)JPush_application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    [self JPush_application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+- (void)JPush_application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    if (appDelegateRespondsToSelectorDidRegisterForRemoteNotificationsWithDeviceToken) {
+        [self JPush_application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+    }
+    
     /// Required - 注册 DeviceToken
     [JPUSHService registerDeviceToken:deviceToken];
 }

@@ -24,7 +24,7 @@
     [LBAppConfiguration shareInstanse].notificationDelegate = self;
     
     //如果您的项目正好使用极光推送，那么可以这样设置快速集成极光推送
-    [LBAppConfiguration setAppDelegateClass:self.class jPushKey:@"08d54656edf68d60e50629c0"];
+    [LBAppConfiguration setJPushKey:@"08d54656edf68d60e50629c0"];
     
     return YES;
 }

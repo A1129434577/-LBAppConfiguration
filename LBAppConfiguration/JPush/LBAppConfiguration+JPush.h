@@ -14,11 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @interface LBAppConfiguration (JPush)
-
 /// 快速配置极光推送，只需这一句
-/// @param appDelegateClass AppDelegate类，必须设置，否则将无法成功注册极光推送
 /// @param pushKey 极光推送key，必须设置，否则将无法成功注册极光推送
-+(void)setAppDelegateClass:(nonnull Class)appDelegateClass jPushKey:(nonnull NSString *)pushKey;
++(void)setJPushKey:(nonnull NSString *)pushKey;
 @end
 
 NS_ASSUME_NONNULL_END
