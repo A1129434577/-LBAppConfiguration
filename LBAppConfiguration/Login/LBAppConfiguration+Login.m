@@ -86,17 +86,16 @@ static NSString *LBModalPresentationStyleKey = @"LBModalPresentationStyleKey";
 
 +(void)loginOutHoldBackAccount{
     [self cleanUserInfoHoldBackAccount:YES];
-    [self cleanPushNotificationsConfig];
     [self loginOut];
 }
 
 + (void)loginOutCleanUserInfo{
     [self cleanUserInfoHoldBackAccount:NO];
-    [self cleanPushNotificationsConfig];
     [self loginOut];
 }
 
 +(void)cleanUserInfoHoldBackAccount:(BOOL)holdBackAccount{
+    [self cleanPushNotificationsConfig];//调用清除推送配置
     if (holdBackAccount) {
         //移除用户数据并保留登录账号
         NSString *account = [LBUserModel shareInstanse].userInfo[LBAccount];
